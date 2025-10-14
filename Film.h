@@ -14,11 +14,14 @@ struct count_and_chapters {
 
 class Film : public Video {
    private:
-    int chapters_count;
-    int* chapters;
+    int chapters_count = 0;
+    int* chapters = nullptr;
 
    public:
-    virtual ~Film() { delete chapters; };
+    virtual ~Film() {
+        delete [] chapters;
+        cerr << "End of the movie" << '\n';
+    };
 
     Film() { this->setChapters(0, nullptr); };
 

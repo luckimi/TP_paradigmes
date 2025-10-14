@@ -7,6 +7,7 @@ class Photo : public Media {
     int latitude{}, longitude{};
 
    public:
+    ~Photo() {cerr << "The SD card is formatted\n";}
     Photo() {};
     Photo(std::string name, std::string path_name)
         : Media(name, path_name) {};

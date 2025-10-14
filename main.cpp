@@ -1,6 +1,8 @@
 #include <iostream>
+#include <list>
 
 #include "Film.h"
+#include "Group.h"
 #include "Photo.h"
 #include "Video.h"
 
@@ -35,20 +37,70 @@ void step_6_7() {
     for (int i = 0; i < 300; i++) {
         chapters2[i] = 3;
     }
-    for (int i = 0; i < 3; i++) {
-        cout << chapters[i] << endl;
+    cout << "test0" << endl;
+    cout << chapters << endl;
+
+    Film movie = Film("traque", "~/Desktop/Traque.mp4", 59, 3, chapters);
+    cout << "test1" << endl;
+
+    movie.setChapters(0, nullptr);
+    cout << "test" << endl;
+    movie.setChapters(300, chapters2);
+
+    movie.print(cout);
+    movie.open();
+}
+
+void step_8() {
+    Video* video_1 = new Video("traque", "~/Desktop/Traque.mp4");
+    std::shared_ptr<Media> video(video_1);
+    Photo* photo_1 =
+        new Photo("Clement", "~/Desktop/Photos/2025/2025-09-15/Clement.jpg");
+    std::shared_ptr<Media> photo1(photo_1);
+    Photo* photo_2 =
+        new Photo("Khalil", "~/Desktop/Photos/2025/2025-09-15/Khalil.jpg");
+    std::shared_ptr<Media> photo2(photo_2);
+    Photo* photo_3 = new Photo(
+        "Quentin loin", "~/Desktop/Photos/2025/2025-09-15/Quentin_loin.jpg");
+    std::shared_ptr<Media> photo3(photo_3);
+    Photo* photo_4 =
+        new Photo("Quentin", "~/Desktop/Photos/2025/2025-09-15/Quentin.jpg");
+    std::shared_ptr<Media> photo4(photo_4);
+    Photo* photo_5 =
+        new Photo("STY", "~/Desktop/Photos/2025/2025-09-15/STY.jpg");
+    std::shared_ptr<Media> photo5(photo_5);
+    Group moustache = Group("Moustache");
+    moustache.push_back(photo1);
+    moustache.push_back(photo3);
+    moustache.push_back(photo4);
+    Group all = Group("Tout le monde");
+    all.push_back(video);
+    all.push_back(photo1);
+    all.push_back(photo2);
+    all.push_back(photo3);
+    all.push_back(photo4);
+    all.push_back(photo5);
+    {
+        Group buro = Group("Buro!");
+        buro.push_back(photo1);
+        buro.push_back(photo2);
+        buro.print(std::cout);
     }
-    Film* movie = new Film("traque", "~/Desktop/Traque.mp4", 59, 3, chapters);
-
-    movie->setChapters(0, nullptr);
-    movie->setChapters(300, chapters2);
-
-    movie->print(cout);
-    movie->open();
+    {
+        Group loin = Group("Loin!");
+        Photo* photo_6 =
+            new Photo("Quentin loin",
+                      "~/Desktop/Photos/2025/2025-09-15/Quentin_loin.jpg");
+        std::shared_ptr<Media> photo6(photo_6);
+        loin.push_back(photo6);
+        loin.print(std::cout);
+    }
+    moustache.print(std::cout);
+    all.print(std::cout);
 }
 
 int main(int argc, const char* argv[]) {
-    
+    step_8();
 
     return 0;
 }

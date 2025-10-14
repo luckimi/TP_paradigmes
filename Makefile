@@ -51,7 +51,7 @@ LDLIBS =
 # Regles de construction/destruction des .o et de l'executable
 # depend-${PROG} sera un fichier contenant les dependances
 #
- 
+
 all: ${PROG}
 
 run: ${PROG}
@@ -65,7 +65,7 @@ clean:
 
 clean-all: clean
 	-@$(RM) ${PROG} 1>/dev/null 2>&1
-  
+
 tar:
 	tar cvf ${PROG}.tar.gz ${SOURCES}
 
@@ -73,7 +73,9 @@ tar:
 # l'option -MM de g++ (attention tous les compilateurs n'ont pas cette option)
 #
 depend-${PROG}:
-	${CXX} ${CXXFLAGS} -MM ${SOURCES} > depend-${PROG}
+	${CXX} ${CXXFLAGS} \
+		-MM ${SOURCES} \
+		> depend-${PROG}
 
 
 ###########################################

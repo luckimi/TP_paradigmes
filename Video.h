@@ -8,6 +8,7 @@ class Video : public Media {
     int length{};
 
    public:
+    ~Video() { cerr << "This video has disappeared\n"; }
     Video() {};
 
     Video(std::string name, std::string path_name) : Media(name, path_name) {};
