@@ -1,6 +1,6 @@
 ##########################################
 #
-#  Exemple de Makefile
+#  Exemple de Makefile corrigé pour le projet
 #  Eric Lecolinet - Reda Dehak - Telecom ParisTech 2015
 #  INF224 - TP C++ - http://www.telecom-paristech.fr/~elc/inf224
 #
@@ -14,7 +14,7 @@ PROG = myprog
 #
 # Fichiers sources (NE PAS METTRE les .h ni les .o seulement les .cpp)
 #
-SOURCES = Film.cpp Media.cpp Manager.cpp main.cpp
+SOURCES = Film.cpp Media.cpp Manager.cpp Photo.cpp Video.cpp Group.cpp server.cpp main.cpp tcpserver.cpp ccsocket.cpp
 
 #
 # Fichiers objets (ne pas modifier sauf si l'extension n'est pas .cpp)
@@ -43,7 +43,7 @@ LDFLAGS =
 # Librairies a utiliser
 # Exemple: LDLIBS = -L/usr/local/qt/lib -lqt
 #
-LDLIBS = 
+LDLIBS = -lpthread 
 
 
 ##########################################
@@ -92,7 +92,7 @@ depend-${PROG}:
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o $@ $<
 
 .c.o:
-	$(CC) -c (CFLAGS) $(INCPATH) -o $@ $<
+	$(CC) -c $(CFLAGS) $(INCPATH) -o $@ $<
 
 
 #############################################

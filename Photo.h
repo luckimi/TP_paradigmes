@@ -1,5 +1,9 @@
 #ifndef PHOTO_H
 #define PHOTO_H
+
+#include <cstdlib>
+#include <iostream>
+
 #include "Media.h"
 
 class Photo : public Media {
@@ -7,29 +11,37 @@ class Photo : public Media {
     int latitude{}, longitude{};
 
    public:
-    ~Photo() {cerr << "The SD card is formatted\n";}
-    Photo() {};
-    Photo(std::string name, std::string path_name)
-        : Media(name, path_name) {};
+    // Inline virtual destructor
+    inline virtual ~Photo() { std::cerr << "The SD card is formatted\n"; }
 
-    Photo(std::string name, std::string path_name, int latitude, int longitude)
-        : Media(name, path_name), latitude(latitude), longitude(longitude) {};
+    // Constructors
+    inline Photo() {}
+    inline Photo(std::string name, std::string path_name)
+        : Media(name, path_name) {}
+    inline Photo(std::string name, std::string path_name, int latitude,
+                 int longitude)
+        : Media(name, path_name), latitude(latitude), longitude(longitude) {}
 
-    void setName(std::string new_name) { Media::setName(new_name); };
-    void setPathName(std::string new_path_name) { Media::setPathName(new_path_name); };
-    void setPosition(int latitude, int longitude) {
-        Photo::latitude = latitude;
-        Photo::longitude = longitude;
-    };
-    void print(std::ostream& s) const {
-        s << "Name : " << this->getName() << "  Path : " << this->getPathName()
-          << "  Taken at " << latitude << ";" << longitude << '\n';
-    };
-    void open() const {
-        std::string concat = "open " + this->getPathName() + " &";
-        const char* command = concat.data();
-        system(command);
-    };
+    // Setters
+    inline void setName(std::string new_name) { Media::setName(new_name); }
+    inline void setPathName(std::string new_path_name) {
+        Media::setPathName(new_path_name);
+    }
+    inline void setPosition(int lat, int lon) {
+        latitude = lat;
+        longitude = lon;
+    }
+
+    // Virtual functions
+    inline void print(std::ostream& s) const override {
+        s << "Name: " << getName() << " Path: " << getPathName()
+          << " Taken at: " << latitude << ";" << longitude << "\n";
+    }
+
+    inline void open() const override {
+        std::string command = "open " + getPathName() + " &";
+        system(command.c_str());
+    }
 };
 
 #endif

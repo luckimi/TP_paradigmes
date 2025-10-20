@@ -1,3 +1,5 @@
-depend-myprog
+depend*
 *.o
 myprog
+server
+client
