@@ -1,5 +1,5 @@
-#ifndef film_h
-#define film_h
+#ifndef FILM_H
+#define FILM_H
 
 #include "Video.h"
 

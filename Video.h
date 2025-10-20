@@ -1,5 +1,5 @@
-#ifndef video_h
-#define video_h
+#ifndef VIDEO_H
+#define VIDEO_H
 
 #include "Media.h"
 

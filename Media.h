@@ -1,5 +1,5 @@
-#ifndef Media_h
-#define Media_h
+#ifndef MEDIA_H
+#define MEDIA_H
 
 #include <string.h>
 

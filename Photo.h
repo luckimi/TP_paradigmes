@@ -1,5 +1,5 @@
-#ifndef photo_h
-#define photo_h
+#ifndef PHOTO_H
+#define PHOTO_H
 #include "Media.h"
 
 class Photo : public Media {
