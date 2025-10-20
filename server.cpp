@@ -28,14 +28,6 @@ int main(int argc, char* argv[]) {
                        "/Users/lucasmichel/Desktop/Telecom_Paris/liste_troll/"
                        "porte_automatique/portes.mp4",
                        180, 3, chapters);
-    auto group = manager.createGroup("Favorites");
-    group->push_back(manager.createPhoto(
-        "Khalil", "~/Desktop/Photos/2025/2025-09-15/Khalil.jpg"));
-    group->push_back(
-        manager.createVideo("Clip",
-                            "/Users/lucasmichel/Desktop/Telecom_Paris/"
-                            "liste_troll/bloopers_forum/Bloopers_listes.mp4",
-                            60));
 
     // Create the TCPServer
     auto* server = new TCPServer([&](string const& request, string& response) {
@@ -52,7 +44,6 @@ int main(int argc, char* argv[]) {
         if (command == "find") {
             stringstream temp;
             manager.printMedia(name, temp);
-            manager.printGroup(name, temp);
             string result = temp.str();
             if (result.empty()) result = "Object not found";
 

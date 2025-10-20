@@ -12,36 +12,37 @@ class Video : public Media {
     int length{0};
 
    public:
-    // Inline virtual destructor
-    inline virtual ~Video() { std::cerr << "This video has disappeared\n"; }
-
+   virtual ~Video();
     // Constructors
-    inline Video() {}
-    inline Video(std::string name, std::string path_name)
+    Video() {}
+    Video(std::string name, std::string path_name)
         : Media(name, path_name) {}
-    inline Video(std::string name, std::string path_name, int len)
+    Video(std::string name, std::string path_name, int len)
         : Media(name, path_name), length(len) {}
 
     // Setters and getters (inline)
-    inline virtual void setName(std::string new_name) override {
+    virtual void setName(const std::string& new_name) override {
         Media::setName(new_name);
     }
-    inline virtual void setPathName(std::string new_path_name) override {
+    virtual void setPathName(const std::string& new_path_name) override {
         Media::setPathName(new_path_name);
     }
-    inline virtual void setLength(int len) { length = len; }
-    inline virtual int getLength() const { return length; }
+    virtual void setLength(int len) { length = len; }
+    virtual int getLength() const { return length; }
 
     // Virtual functions
-    inline void print(std::ostream& s) const override {
+    void print(std::ostream& s) const override {
         s << "Name: " << getName() << "  Path: " << getPathName()
           << "  Length: " << length << "\n";
     }
 
-    inline void open() const override {
+    void open() const override {
         std::string concat = "open " + getPathName() + " &";
         system(concat.c_str());
     }
+    std::string getClassName() const override { return "Video"; }
+    void save(std::ofstream& ofs) const override;
+    void load(std::ifstream& ifs) override;
 };
 
 #endif

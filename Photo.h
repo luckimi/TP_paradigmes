@@ -11,37 +11,41 @@ class Photo : public Media {
     int latitude{}, longitude{};
 
    public:
-    // Inline virtual destructor
-    inline virtual ~Photo() { std::cerr << "The SD card is formatted\n"; }
+   virtual ~Photo();
 
     // Constructors
-    inline Photo() {}
-    inline Photo(std::string name, std::string path_name)
+    Photo() {}
+    Photo(std::string name, std::string path_name)
         : Media(name, path_name) {}
-    inline Photo(std::string name, std::string path_name, int latitude,
+    Photo(std::string name, std::string path_name, int latitude,
                  int longitude)
         : Media(name, path_name), latitude(latitude), longitude(longitude) {}
 
     // Setters
-    inline void setName(std::string new_name) { Media::setName(new_name); }
-    inline void setPathName(std::string new_path_name) {
+    void setName(const std::string& new_name) override {
+        Media::setName(new_name);
+    }
+    void setPathName(const std::string& new_path_name) override {
         Media::setPathName(new_path_name);
     }
-    inline void setPosition(int lat, int lon) {
+    void setPosition(int lat, int lon) {
         latitude = lat;
         longitude = lon;
     }
 
     // Virtual functions
-    inline void print(std::ostream& s) const override {
+    void print(std::ostream& s) const override {
         s << "Name: " << getName() << " Path: " << getPathName()
           << " Taken at: " << latitude << ";" << longitude << "\n";
     }
 
-    inline void open() const override {
+    void open() const override {
         std::string command = "open " + getPathName() + " &";
         system(command.c_str());
     }
+    std::string getClassName() const override { return "Photo"; }
+    void save(std::ofstream& ofs) const override;
+    void load(std::ifstream& ifs) override;
 };
 
 #endif

@@ -18,14 +18,11 @@ class Film : public Video {
     int* chapters = nullptr;
 
    public:
-    virtual ~Film() {
-        delete [] chapters;
-        cerr << "End of the movie" << '\n';
-    };
-
+   virtual ~Film();
     Film() { this->setChapters(0, nullptr); };
 
-    Film(std::string name, std::string path_name) : Video(name, path_name) {
+    Film(std::string name, std::string path_name)
+        : Video(name, path_name) {
         this->setChapters(0, nullptr);
     };
 
@@ -34,16 +31,22 @@ class Film : public Video {
         this->setChapters(0, nullptr);
     };
 
-    Film(std::string name, std::string path_name, int length, int count,
-         int* tab)
+    Film(const std::string& name, const std::string& path_name,
+                int length, int count, int* chapters)
         : Video(name, path_name, length) {
-        this->setChapters(count, tab);
+        this->setChapters(count, chapters);
     };
 
+    void open() const override {
+        std::cout << "Playing film " << getName() << std::endl;
+    }
     void setChapters(int length, int* tab);
     count_and_chapters getChapters() const;
 
-    void print(std::ostream& s) const;
+    void print(std::ostream& s) const override;
+    std::string getClassName() const override { return "Film"; }
+    void save(std::ofstream& ofs) const override;
+    void load(std::ifstream& ifs) override;
 };
 
 #endif

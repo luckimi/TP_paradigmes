@@ -1,29 +1,33 @@
 #ifndef MEDIA_H
 #define MEDIA_H
 
-#include <string.h>
-
+#include <fstream>
 #include <iostream>
-
-using namespace std;
+#include <string>
 
 class Media {
    private:
-    string name{}, path_name{};
+    std::string name;
+    std::string path_name;
 
    public:
-    Media() {};
-
-    Media(string name, string path_name) : name(name), path_name(path_name) {};
+    Media() = default;
+    Media(const std::string& name, const std::string& path_name)
+        : name(name), path_name(path_name) {}
 
     virtual ~Media();
 
-    virtual string getName() const;
-    virtual string getPathName() const;
-    virtual void setName(string name);
-    virtual void setPathName(string path_name);
+    virtual std::string getName() const;
+    virtual std::string getPathName() const;
+    virtual void setName(const std::string& name);
+    virtual void setPathName(const std::string& path_name);
+
     virtual void print(std::ostream& s) const;
     virtual void open() const = 0;
+    virtual std::string getClassName() const;
+
+    virtual void save(std::ofstream& ofs) const;
+    virtual void load(std::ifstream& ifs);
 };
 
-#endif
+#endif  // MEDIA_H

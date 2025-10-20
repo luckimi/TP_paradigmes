@@ -12,11 +12,11 @@ class Group : public std::list<MediaPtr> {
     std::string name{};
 
    public:
-    ~Group() { cerr << "Group deleted\n"; }
+    ~Group() { std::cerr << "Group deleted\n"; }
     Group(std::string new_name) : name(new_name) {}
     std::string getName() const { return name; };
 
-    void push_back(shared_ptr<Media> media) {
+    void push_back(std::shared_ptr<Media> media) {
         list<MediaPtr>::push_back(media);
     }
     void print(std::ostream& s) const {

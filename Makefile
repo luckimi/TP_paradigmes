@@ -14,7 +14,7 @@ PROG = myprog
 #
 # Fichiers sources (NE PAS METTRE les .h ni les .o seulement les .cpp)
 #
-SOURCES = Film.cpp Media.cpp Manager.cpp Photo.cpp Video.cpp Group.cpp server.cpp main.cpp tcpserver.cpp ccsocket.cpp
+SOURCES = Film.cpp Media.cpp Manager.cpp Photo.cpp Video.cpp server.cpp main.cpp tcpserver.cpp ccsocket.cpp
 
 #
 # Fichiers objets (ne pas modifier sauf si l'extension n'est pas .cpp)
