@@ -7,9 +7,12 @@ import javax.swing.*;
 public class BipBip extends JFrame {// fenêtre principale
 
     JScrollPane scroll;
+    JMenuBar menuBar;
+    JMenu menu;
+    JToolBar tool;
     JTextArea text;
     JPanel bas;
-    JButton button1, button2, close;
+    Action hello, end, close;
     private static final long serialVersionUID = 1L;
 
     public static void main(String argv[]) {
@@ -17,36 +20,68 @@ public class BipBip extends JFrame {// fenêtre principale
     }
 
     public BipBip() {
+        System.setProperty("apple.laf.useScreenMenuBar", "true");
         setLayout(new BorderLayout());
-        add (scroll = new JScrollPane(text = new JTextArea(10,50)), BorderLayout.CENTER);
-        add (bas = new JPanel(), BorderLayout.SOUTH);
-        bas.add(button1 = new JButton("Hello"));
-        bas.add(button2 = new JButton("End"));
-        bas.add(close = new JButton("Close"));
-        button1.addActionListener(new DoItListener());
-        button2.addActionListener(new PrintListener());
-        close.addActionListener(new CloseListener());
+
+        add(scroll = new JScrollPane(text = new JTextArea(10, 50)), BorderLayout.CENTER);
+
+        hello = new Hello();
+        end = new End();
+        close = new Close();
+
+        menuBar = new JMenuBar();
+        menu = new JMenu("Actions");
+        menu.add(new JMenuItem(hello));
+        menu.add(new JMenuItem(end));
+        menu.add(new JMenuItem(close));
+        menuBar.add(menu);
+        setJMenuBar(menuBar);
+
+        tool = new JToolBar();
+        tool.add(hello);
+        tool.add(end);
+        tool.add(close);
+        add(tool, BorderLayout.NORTH);
+
+        add(bas = new JPanel(), BorderLayout.SOUTH);
+        bas.add(new JButton(hello));
+        bas.add(new JButton(end));
+        bas.add(new JButton(close));
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
         setVisible(true);
     }
 
-    class DoItListener implements ActionListener {
+    class Hello extends AbstractAction {
 
+        public Hello() {
+            super("Hello");
+        }
+
+        @Override
         public void actionPerformed(ActionEvent e) {
             text.append("hello world\n");
         }
     }
+    class End extends AbstractAction {
 
-    class PrintListener implements ActionListener {
+        public End() {
+            super("End");
+        }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             text.append("goodbye\n");
         }
     }
+    class Close extends AbstractAction {
 
-    class CloseListener implements ActionListener {
+        public Close() {
+            super("Close");
+        }
 
+        @Override
         public void actionPerformed(ActionEvent e) {
             System.exit(0);
         }
