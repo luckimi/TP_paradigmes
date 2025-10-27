@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class BipBip extends JFrame {// fenêtre principale
+public class Screen extends JFrame {// fenêtre principale
 
     JScrollPane scroll;
     JMenuBar menuBar;
@@ -16,10 +16,10 @@ public class BipBip extends JFrame {// fenêtre principale
     private static final long serialVersionUID = 1L;
 
     public static void main(String argv[]) {
-        new BipBip();
+        new Screen();
     }
 
-    public BipBip() {
+    public Screen() {
         System.setProperty("apple.laf.useScreenMenuBar", "true");
         setLayout(new BorderLayout());
 
