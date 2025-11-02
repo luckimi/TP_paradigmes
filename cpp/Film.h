@@ -4,6 +4,7 @@
 #include "Video.h"
 
 struct count_and_chapters {
+    // groups up the count of chapters and the chapters themselves for easier get
     int count;
     int* chapters;
     count_and_chapters(int new_count, int* new_chapters) {
@@ -18,11 +19,10 @@ class Film : public Video {
     int* chapters = nullptr;
 
    public:
-   virtual ~Film();
+    virtual ~Film();
     Film() { this->setChapters(0, nullptr); };
 
-    Film(std::string name, std::string path_name)
-        : Video(name, path_name) {
+    Film(std::string name, std::string path_name) : Video(name, path_name) {
         this->setChapters(0, nullptr);
     };
 
@@ -31,8 +31,8 @@ class Film : public Video {
         this->setChapters(0, nullptr);
     };
 
-    Film(const std::string& name, const std::string& path_name,
-                int length, int count, int* chapters)
+    Film(const std::string& name, const std::string& path_name, int length,
+         int count, int* chapters)
         : Video(name, path_name, length) {
         this->setChapters(count, chapters);
     };

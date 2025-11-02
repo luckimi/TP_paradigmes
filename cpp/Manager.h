@@ -1,16 +1,16 @@
 #ifndef MANAGER_H
 #define MANAGER_H
 
+#include <iostream>
 #include <map>
 #include <memory>
 #include <string>
-#include <iostream>
 
+#include "Film.h"
+#include "Group.h"
 #include "Media.h"
 #include "Photo.h"
 #include "Video.h"
-#include "Film.h"
-#include "Group.h"
 
 using namespace std;
 
@@ -25,8 +25,10 @@ class Manager {
 
     // Media creation
     shared_ptr<Photo> createPhoto(const string& name, const string& path_name);
-    shared_ptr<Video> createVideo(const string& name, const string& path_name, int duration);
-    shared_ptr<Film> createFilm(const string& name, const string& path_name, int duration, int count, int* chapters);
+    shared_ptr<Video> createVideo(const string& name, const string& path_name,
+                                  int duration);
+    shared_ptr<Film> createFilm(const string& name, const string& path_name,
+                                int duration, int count, int* chapters);
 
     // Group creation
     shared_ptr<Group> createGroup(const string& name);

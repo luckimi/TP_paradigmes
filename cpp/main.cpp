@@ -3,9 +3,9 @@
 
 #include "Film.h"
 #include "Group.h"
+#include "Manager.h"
 #include "Photo.h"
 #include "Video.h"
-#include "Manager.h"
 
 using namespace std;
 
@@ -100,14 +100,16 @@ void step_8() {
     all.print(std::cout);
 }
 
-void step_10(){
+void step_10() {
     Manager manager;
 
-    auto photo1 = manager.createPhoto("Clement", "~/Desktop/Photos/2025/2025-09-15/Clement.jpg");
+    auto photo1 = manager.createPhoto(
+        "Clement", "~/Desktop/Photos/2025/2025-09-15/Clement.jpg");
     auto video1 = manager.createVideo("traque", "~/Desktop/Traque.mp4", 120);
 
     int chapters[] = {1, 2, 3};
-    auto film1 = manager.createFilm("traque2", "~/Desktop/Traque.mp4", 300, 3, chapters);
+    auto film1 =
+        manager.createFilm("traque2", "~/Desktop/Traque.mp4", 300, 3, chapters);
 
     auto group1 = manager.createGroup("Favorites");
     group1->push_back(photo1);

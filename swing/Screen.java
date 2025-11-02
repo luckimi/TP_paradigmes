@@ -103,8 +103,8 @@ public class Screen extends JFrame {
             String response = client.send(msg);
             SwingUtilities.invokeLater(() -> {
                 if (response != null) {
-                    text.append("\nResponse: " + response + "\n"); 
-                }else {
+                    text.append("\nResponse: " + response + "\n");
+                } else {
                     text.append("\n[No response or connection lost]\n");
                 }
                 text.setCaretPosition(text.getDocument().getLength());

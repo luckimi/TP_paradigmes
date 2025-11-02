@@ -12,11 +12,10 @@ class Video : public Media {
     int length{0};
 
    public:
-   virtual ~Video();
+    virtual ~Video();
     // Constructors
     Video() {}
-    Video(std::string name, std::string path_name)
-        : Media(name, path_name) {}
+    Video(std::string name, std::string path_name) : Media(name, path_name) {}
     Video(std::string name, std::string path_name, int len)
         : Media(name, path_name), length(len) {}
 
