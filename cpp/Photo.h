@@ -40,7 +40,7 @@ class Photo : public Media {
     }
 
     void open() const override {
-        std::string command = "open " + getPathName() + " &";
+        std::string command = "imagej " + getPathName() + " &";
         system(command.c_str());
     }
     std::string getClassName() const override { return "Photo"; }

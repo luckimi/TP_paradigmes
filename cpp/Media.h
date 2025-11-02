@@ -6,7 +6,7 @@
 #include <string>
 
 class Media {
-   private:
+    protected:
     std::string name;
     std::string path_name;
 

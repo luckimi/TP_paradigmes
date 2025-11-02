@@ -21,14 +21,8 @@ int main(int argc, char* argv[]) {
 
     // Example data in the manager
     int chapters[3] = {1, 2, 3};
-    manager.createPhoto("Clement",
-                        "~/Desktop/Photos/2025/2025-09-15/Clement.jpg");
-    manager.createVideo("traque", "~/Desktop/Traque.mp4", 120);
-    manager.createFilm("Epic",
-                       "/Users/lucasmichel/Desktop/Telecom_Paris/liste_troll/"
-                       "porte_automatique/portes.mp4",
-                       180, 3, chapters);
-
+    manager.createPhoto("Logo", "../Logo_Telecom.png");
+    manager.createFilm("test_video","../test_video.mp4",180, 3, chapters);
     // Create the TCPServer
     auto* server = new TCPServer([&](string const& request, string& response) {
         cout << "Request: " << request << endl;

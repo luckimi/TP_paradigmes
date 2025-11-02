@@ -36,7 +36,7 @@ class Video : public Media {
     }
 
     void open() const override {
-        std::string concat = "open " + getPathName() + " &";
+        std::string concat = "mpv " + path_name + " &";
         system(concat.c_str());
     }
     std::string getClassName() const override { return "Video"; }

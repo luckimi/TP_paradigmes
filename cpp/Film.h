@@ -39,6 +39,9 @@ class Film : public Video {
 
     void open() const override {
         std::cout << "Playing film " << getName() << std::endl;
+        std::string concat = "mpv " + getPathName() + " &";
+        std::cout << concat.c_str() << std::endl;
+        system(concat.c_str());
     }
     void setChapters(int length, int* tab);
     count_and_chapters getChapters() const;
