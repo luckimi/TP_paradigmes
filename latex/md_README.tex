@@ -1,7 +1,31 @@
 \hypertarget{md_README_autotoc_md1}{}\doxysection{Partie C++ \+:}\label{md_README_autotoc_md1}
-\hypertarget{md_README_autotoc_md2}{}\doxysubsection{Question 1 \+:}\label{md_README_autotoc_md2}
-\hypertarget{md_README_autotoc_md3}{}\doxysection{Partie Java \+:}\label{md_README_autotoc_md3}
-\hypertarget{md_README_autotoc_md4}{}\doxysubsection{Question 4 \+:}\label{md_README_autotoc_md4}
-\hypertarget{md_README_autotoc_md5}{}\doxysubsection{Question 2 \+:}\label{md_README_autotoc_md5}
-\hypertarget{md_README_autotoc_md6}{}\doxysubsection{Question 3 \+:}\label{md_README_autotoc_md6}
-\hypertarget{md_README_autotoc_md7}{}\doxysubsection{Question 4 \+:}\label{md_README_autotoc_md7}
+\hypertarget{md_README_autotoc_md2}{}\doxysubsection{Etape 4 \+:}\label{md_README_autotoc_md2}
+{\itshape Comment appelle-\/t\textquotesingle{}on ce type de méthode et comment faut-\/il les déclarer ?}
+
+La méthde open() est une méthode abstraite dans la classe de base (Media.\+h).\textbackslash{} On la déclare en ajoutant = 0 lors de sa définition.
+
+{\itshape Si vous avez fait ce qui précède comme demandé, il ne sera plus possible d\textquotesingle{}instancer des objets de la classe de base. Pourquoi ?} Une classe qui contient une méthode abstraite devient une classe abstraite et ne peut donc plus être instanciée.\hypertarget{md_README_autotoc_md3}{}\doxysubsection{Etape 5 \+:}\label{md_README_autotoc_md3}
+{\itshape Quelle est la propriété caractéristique de l\textquotesingle{}orienté objet qui permet de faire cela ?}
+
+C\textquotesingle{}est grâce au polymorphisme qu\textquotesingle{}on peut appeler un même méthode sur plusieurs objets différents.
+
+{\itshape Qu\textquotesingle{}est-\/il spécifiquement nécessaire de faire dans le cas du C++ ?}
+
+Pour surcharger une fonction, on doit préciser {\ttfamily virtual} dans la classe parente et {\ttfamily override} dans les enfants (on peut aussi mettre {\ttfamily final} pour le dernier enfant).
+
+{\itshape Quel est le type des éléments du tableau \+: le tableau doit-\/il contenir des objets ou des pointeurs vers ces objets ? Pourquoi ? Comparer à Java.}
+
+Les éléments du tableau sont des pointeurs vers la classe. Cela permet d\textquotesingle{}appeler une méthode commune sans se soucier du type d\textquotesingle{}objet. En C++ comme en java, on utilise la surcharge (override) pour avoir des comportements différents entre parent et enfant.\hypertarget{md_README_autotoc_md4}{}\doxysubsection{Etape 7 \+:}\label{md_README_autotoc_md4}
+{\itshape La copie d\textquotesingle{}objet peut également poser problème quand ils ont des variables d\textquotesingle{}instance qui sont des pointeurs. Quel est le problème et quelles sont les solutions ?}
+
+Quand on fait de la copie d\textquotesingle{}objets sous la forme de pointeurs, on peut avoir des problème de fuite de mémoire (on ne détruit pas la copie), de double destruction ou d\textquotesingle{}avoir des variable d\textquotesingle{}instance partagées entre l\textquotesingle{}original et la copie.\hypertarget{md_README_autotoc_md5}{}\doxysubsection{Etape 8 \+:}\label{md_README_autotoc_md5}
+{\itshape Le groupe ne doit pas détruire les objets quand il est détruit car un objet peut appartenir à plusieurs groupes (on verra ce point à la question suivante). On rappelle aussi que la liste d\textquotesingle{}objets doit en fait être une liste de pointeurs d\textquotesingle{}objets. Pourquoi ? Comparer à Java.}
+
+Avoir une liste de pointeurs d\textquotesingle{}objets permet d\textquotesingle{}utiliser pleinement les proprétés liées au polymorphisme et donc de les traiter comme des objets de même type.\hypertarget{md_README_autotoc_md6}{}\doxysubsection{Etape 10 \+:}\label{md_README_autotoc_md6}
+{\itshape Les méthodes précédentes permettent d\textquotesingle{}assurer la cohérence de la base de données car quand on crée un objet on l\textquotesingle{}ajoute à la table adéquate. Par contre, ce ne sera pas le cas si on crée un objet directement avec new (il n\textquotesingle{}appartiendra à aucune table). Comment peut-\/on l\textquotesingle{}interdire, afin que seule la classe servant à manipuler les objets puisse en créer de nouveaux ?}
+
+Pour protéger notre base de données et ne permettre l\textquotesingle{}instanciation que dans une classe spécifique, on peut mettre l\textquotesingle{}instanciation dans les méthodes privées et mettre une exeption pour le Manager ({\ttfamily friend class Manager;}).\hypertarget{md_README_autotoc_md7}{}\doxysection{Partie Java \+:}\label{md_README_autotoc_md7}
+\hypertarget{md_README_autotoc_md8}{}\doxysubsection{Etape 1 \+:}\label{md_README_autotoc_md8}
+{\itshape Lancez votre programme, cliquez plusieurs fois sur les deux premiers bouton, retaillez la fenêtre. Que constate-\/t\textquotesingle{}on ?}
+
+La fenêtre change sa taille mais les boutons ne s\textquotesingle{}adaptent pas à la nouvelle forme. La zone de texte ne respecte plus la taille qu\textquotesingle{}on a défini. 
